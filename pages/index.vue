@@ -2,10 +2,10 @@
   <template>
 
       <div>
-  
-       
-       
-          <h1>Welcome</h1>
+
+          <div class="my-center">
+            <h1> Welcome </h1>
+          </div>
 
       </div>
 

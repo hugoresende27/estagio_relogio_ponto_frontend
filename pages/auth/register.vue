@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="my-center">
     <b-form @submit.prevent="userRegister">
       
         <b-form-group

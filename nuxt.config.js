@@ -70,7 +70,7 @@ export default {
     // },
 
     redirect: {
-      login: '/login',    //if login required redirected here
+      login: 'auth/login',    //if login required redirected here
       logout: '/',        //redirected after logout
       // callback: '/login',   //after login Allowed Callback URLs
       home: '/dashboard'    //redirect after login
