@@ -18,7 +18,10 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+
+   
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -52,6 +55,19 @@ export default {
         url: 'http://localhost:8000'
       },
     },
+
+    // cookie: {
+    //   cookie: {
+    //     // (optional) If set, we check this cookie existence for loggedIn check
+    //     name: 'XSRF-TOKEN',
+    //   },
+    //   endpoints: {
+    //     // (optional) If set, we send a get request to this endpoint before login
+    //     csrf: {
+    //       url: ''
+    //     }
+    //   }
+    // },
 
     redirect: {
       login: '/login',    //if login required redirected here

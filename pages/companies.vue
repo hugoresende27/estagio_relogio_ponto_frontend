@@ -1,9 +1,12 @@
 <template>
     <div>
-        <h1>Companies</h1>
+        
 
-        <p v-for="company in companies" :key="company.id" > {{ companies.data }} </p>
+  	<p class="text-2xl mb-3 font-bold">Companies</p>
 
+		<p><b>Company Name</b> : {{ companies }}</p>
+
+    <!-- <span :for="company in companies">{{ company }} </span> -->
 
     </div>
 </template>
@@ -13,38 +16,34 @@
 export default {
     middleware:'auth',
 
-    mounted(){
-        this.$axios.$get('/sanctum/csrf-cookie');
-        console.log(this.$auth.user)
-    },
+
+
+    // mounted(){
+    //         this.$axios.$get('/sanctum/csrf-cookie');
+    //         console.log(this.$auth.user)
+    //     },
+
+    data() {
+          return {
+            companies: [],
+          }
+        },
+    
+
+    async fetch() {
+  
+          this.companies = 
+                await this.$axios.$get("/api/companies/", 
+                  { headers: { "X-CSRFToken": this.$axios.$get('/sanctum/csrf-cookie')} 
+                });
+
+          console.log(companies);
+
+       
+    }
 
     
-    async fetch(){
-      this.companies = await fetch ('http://localhost:8000/api/companies').then(res=>res.json())
-     
-      // console.log($.parseJSON(undefined));
-      //  console.log(JSON.parse(undefined));
-      console.log(this.companies)
-
-    
 
 
-
-    },
-
-
-
-    data(){
-    return {
-      content: '',
-      companies: [],
-    }
-  },
-
-  methods: {
-
-        
-
-    }
 }
 </script>

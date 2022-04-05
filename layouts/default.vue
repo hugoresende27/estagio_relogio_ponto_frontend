@@ -15,6 +15,9 @@
                 <div v-if="$auth.loggedIn">
 	                <NuxtLink to='/companies' class="text-white ml-3">Companies</NuxtLink>
                 </div>
+                <div v-if="$auth.loggedIn">
+	                <NuxtLink to='/employees' class="text-white ml-3">Employees</NuxtLink>
+                </div>
                
 
             </b-navbar-nav>
