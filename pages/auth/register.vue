@@ -11,8 +11,13 @@
                            v-model="form.name"
                 type="text"
                 placeholder="Enter Name"
-                required>
+                >
             </b-form-input>
+
+            <p class="" v-if="errors.name">
+                          {{ errors.name.join(" ") }}  
+            </p>
+             
 
         </b-form-group>
 
@@ -25,9 +30,12 @@
                            v-model="form.email"
                 type="email"
                 placeholder="Enter email"
-                required>
+                >
             </b-form-input>
 
+            <p class="" v-if="errors.email">
+                          {{ errors.email.join(" ") }}  
+            </p>
         </b-form-group>
         
         
@@ -41,8 +49,12 @@
                    type="password"
             v-model="form.password"
             placeholder="Enter Password"
-            required>
+            >
             </b-form-input>
+
+            <p class="" v-if="errors.password">
+                          {{ errors.password.join(" ") }}  
+            </p>
 
         </b-form-group>
 
@@ -56,8 +68,12 @@
                    type="password"
             v-model="form.password_confirmation"
             placeholder="Confirm Password"
-            required>
+            >
             </b-form-input>
+
+            <p class="" v-if="errors.password_confirmation">
+                              {{ errors.password_confirmation.join(" ") }}
+                              </p>
 
         </b-form-group>
 
@@ -79,17 +95,17 @@ export default {
 
   data(){
         return{
-            errors:{
-
-            },
+    
             form: {
 
                   name: "",
                   email: "",
                   password: "",
                   password_confirmation: ""
-                }
-                  }
+                },
+            errors: ''
+            
+            }
 
     },
 
@@ -97,13 +113,25 @@ export default {
   methods: {
     async userRegister() {
       try {
-        
-        await this.$axios.post('api/register', this.form )
-           await this.$auth.loginWith('laravelSanctum', { data: this.form })
 
-            // this.$router.push('/')
-        } catch (e) {
-          this.error = e.response.data.message
+        let errors = []
+                    await this.$axios.$get('sanctum/csrf-cookie')
+                    await this.$axios.$post('api/register', this.form)
+                        .then((resp) => { this.$auth.loginWith('laravelSanctum', {data: this.form})})
+                        .catch((err) => {
+                            if (err.response.status = 422) {
+                                errors = err.response.data.errors
+                            }
+                        })
+                        this.errors = errors
+        /*
+        await this.$axios.post('api/register', this.form )
+
+        await this.$auth.loginWith('laravelSanctum', { data: this.form })
+
+         */
+        } catch (err) {
+          
         }
     }
   }

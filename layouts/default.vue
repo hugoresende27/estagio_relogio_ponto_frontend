@@ -7,10 +7,7 @@
 
             <b-navbar-nav>
                 
-                <NuxtLink to='/' class="text-white">Relogio de Ponto</NuxtLink>
-
-           
-               
+                <NuxtLink to='/' class="my-title">Relogio de Ponto</NuxtLink>
 
             </b-navbar-nav>
 
@@ -37,21 +34,20 @@
 
       
 
-      <div  class="my-side-bar p-3">
+      <div  class="my-side-bar">
         <ul  v-if="$auth.loggedIn" class="nav flex-column">
-                <li class="nav-item">
-                   <NuxtLink to='/dashboard' class="text-white">Dashboard</NuxtLink>
-	                
-                </li>
-                <li class="nav-item">
-                    <NuxtLink to='/companies' class="text-white">Companies</NuxtLink>
-                </li>
-                <li class="nav-item">
-                    <NuxtLink to='/employees' class="text-white">Employees</NuxtLink>
-                </li>
-                <li class="nav-item">
-                     <NuxtLink to='/testes' class="text-white">TESTES</NuxtLink>
-                </li>
+
+            <NuxtLink class="my-nav-btn mt-3 mb-3 text-white " to='/dashboard' >Dashboard </NuxtLink>
+
+
+            <NuxtLink  class="my-nav-btn mb-3 text-white" to='/companies' >Companies</NuxtLink>
+
+
+            <NuxtLink  class="my-nav-btn mb-3 text-white" to='/employees' >Employees</NuxtLink>
+
+
+            <NuxtLink class="my-nav-btn mb-3 text-white"  to='/testes' >TESTES</NuxtLink>
+                
         </ul>
       </div>
          
@@ -93,9 +89,41 @@ export default {
 
 <style>
 
+
+      .my-title{
+        color: #fff;
+        font-size: 2rem;
+
+      }
+
+/*///////////////////BUTTONS ///////////////////////////////////*/
+     @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300&display=swap');
+
+      .my-nav-btn{
+        background: rgb(18,85,17);
+        background: linear-gradient(105deg, rgba(18,85,17,1) 0%, rgba(19,32,4,1) 100%);
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 1.3rem;
+        font-family: 'Hind', sans-serif;
+        
+      }
+
+      .my-nav-btn:hover{
+        background: rgb(3,39,39);
+        background: linear-gradient(105deg, rgba(3,39,39,1) 0%, rgba(3,5,4,1) 97%);
+
+      }
+      .my-nav-btn a{
+        color: #fff;
+      }
+
+/*/////////////////// MAIN CONTENTS ///////////////////////////////////*/
       .my-main-content{
-        margin-left: 150px;
-        background-color: grey;
+        color:#fff;
+        background: rgb(3,39,39);
+        background: linear-gradient(105deg, rgba(3,39,39,1) 0%, rgba(3,5,4,1) 97%);
+        margin-left: 150px;   
         height: 80vh;
       }
 
@@ -106,14 +134,12 @@ export default {
 
       .my-side-bar{
         position: absolute;
-        background-color: #000;
+        background: rgb(253,187,45);
+        background: linear-gradient(105deg, rgba(253,187,45,1) 14%, rgba(195,171,34,1) 75%);
         width: 150px;
         height: 80vh;
         text-align: center;
-      }
-      .my-side-bar li{
         
-        margin: 20px ;
       }
 
       .my-center{ 
@@ -122,6 +148,10 @@ export default {
         align-items: center;             
         justify-content: center;/*alinha tudo verticalmente com uso de height:100vh*/
         height: 80vh;
+      }
+
+      a:hover{
+        text-decoration: none;
       }
 
 

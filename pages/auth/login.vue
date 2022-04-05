@@ -1,7 +1,8 @@
 <template>
   <div class="my-center">
+   <p class="">{{ errors }}</p>
     <b-form @submit.prevent="userLogin">
-      
+     
         <b-form-group
             id="input-group-1"
             label="Email address:"
@@ -51,16 +52,18 @@ export default {
       form: {
         email: '',
         password: ''
-      }
+      },
+      errors: ''
     }
   },
   methods: {
     async userLogin() {
       try {
-        let response = await this.$auth.loginWith('laravelSanctum', { data: this.form })
-        // this.$auth.setUser(response.data)
-        // console.log(this.$auth)
+         await this.$auth.loginWith('laravelSanctum', { data: this.form })
+      
       } catch (err) {
+
+        this.errors = 'Could not sign you in with those credentials.'
         console.log(err)
       }
     }
